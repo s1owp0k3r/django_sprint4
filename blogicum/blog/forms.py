@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Post, Comment
+from .models import Comment, Post
 
 
 class PostForm(forms.ModelForm):
@@ -12,7 +12,7 @@ class PostForm(forms.ModelForm):
             'pub_date': forms.DateTimeInput(
                 format='%Y-%m-%dT%H:%M:%S',
                 attrs={'type': 'datetime-local'}
-                )
+            )
         }
 
 

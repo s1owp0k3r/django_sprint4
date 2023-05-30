@@ -1,14 +1,13 @@
-from django.shortcuts import get_object_or_404, redirect
-from django.utils import timezone
-from django.views.generic import (
-    CreateView, DeleteView, DetailView, ListView, UpdateView
-)
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse_lazy
+from django.utils import timezone
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
 
-from .models import Category, Post, Comment
-from .forms import PostForm, CommentForm
+from .forms import CommentForm, PostForm
+from .models import Category, Comment, Post
 
 
 class PostListView(ListView):
@@ -18,7 +17,7 @@ class PostListView(ListView):
     def get_queryset(self, **kwargs):
         return Post.objects.select_related(
             'category', 'location', 'author'
-            ).order_by('-pub_date')
+        ).order_by('-pub_date')
 
 
 class HomePageView(PostListView):
@@ -72,7 +71,7 @@ class ProfileView(PostListView):
         profile = get_object_or_404(
             User,
             username=self.kwargs['username']
-            )
+        )
         context['profile'] = profile
         return context
 
