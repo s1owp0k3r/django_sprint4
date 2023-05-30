@@ -93,7 +93,7 @@ class Post(PublishedModel):
         return self.title
 
     def comment_count(self):
-        return Comment.objects.filter(post=self).count()
+        return self.comments.all().count()
 
 
 class Comment(models.Model):
