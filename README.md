@@ -10,7 +10,7 @@
 - Установите зависимости из файла requirements.txt:\
 `pip install -r requirements.txt`
 - Перейдите в каталог с файлом manage.py, примените миграции:\
-`cd yatube_api/`\
+`cd blogicum/`\
 `python manage.py migrate`
 - Запустите сервер:\
 `python manage.py runserver`
